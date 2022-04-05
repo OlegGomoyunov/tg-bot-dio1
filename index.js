@@ -24,7 +24,8 @@ const MenuNavigation = {
 const ButContacts = {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{text:'Реквизиты', url: 'https://dionoyabrsk.yanao.ru/about/contacts/'}, {text:'Назад', callback_data: 'backBut'}]        
+                    [{text:'Реквизиты', url: 'https://dionoyabrsk.yanao.ru/about/contacts/'}, {text:'Назад', callback_data: 'backBut'}],
+                    [{text:'Группа в вк', url: 'https://vk.com/dio_noyabrsk'}]    
                 ]
             })
 }
@@ -88,7 +89,7 @@ const ButContacts = {
 
 const start = () => {
     bot.setMyCommands([
-        {command: '/start', description: 'Начальное приветствие'}
+        {command: '/start', description: 'Привет'}
     ])
     //_____________________Запуск__________________________
     bot.on('message', async msg => {
@@ -96,7 +97,7 @@ const start = () => {
         const chatId = msg.chat.id;
         if (text === '/start'){
             await bot.sendPhoto(chatId, 'https://i.ibb.co/x3gWr0D/image.png')
-            return bot.sendMessage(chatId, 'Приветствуем в телеграмм-боте Департамента имущественных отношений г. Ноябрьск! Выберите интересующий вас пункт меню:', MenuNavigation)
+            return bot.sendMessage(chatId, 'Приветствуем в телеграмм-боте Департамента имущественных отношений г. Ноябрьск! Выберите интересующий Вас пункт меню:', MenuNavigation)
 
             // return bot.sendMessage(chatId,'Меню:', MenuNavigation)
         }
@@ -124,7 +125,7 @@ const start = () => {
               })
               bot.sendMessage(query.message.chat.id, 'Для просмотра реквизитов перейдите по ссылке', ButContacts)
             }).catch(function(error){
-                bot.sendMessage(query.message.chat.id, 'Я вас не понимаю, попробуйте еще раз!)')
+                bot.sendMessage(query.message.chat.id, 'Я Вас не понимаю, попробуйте еще раз!)')
             }).done();
                 break
             case 'but5':
@@ -132,7 +133,7 @@ const start = () => {
                 break
             case 'backBut': 
                  bot.sendPhoto(query.message.chat.id, 'https://i.ibb.co/x3gWr0D/image.png')     
-                    bot.sendMessage(query.message.chat.id, 'Выберите интересующий вас пункт меню:', MenuNavigation)         
+                    bot.sendMessage(query.message.chat.id, 'Выберите интересующий Вас пункт меню:', MenuNavigation)         
                 break
         }
 
